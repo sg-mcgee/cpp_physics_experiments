@@ -2,20 +2,21 @@
 //
 
 #include <iostream>
+#include <string>
+#include <SDL3\SDL.h>
+#include "MainGame.h"
+
+
+
+
 
 int main() {
-    std::cout << "Hello World!\n" << std::endl;
+	MainGame mainGame;
+	mainGame.run();
 
-    int fib1 = 1;
-    int fib2 = 1;
-    int fib3;
+	std::cout << "Enter any key to exit...";
+	int a;
+	std::cin >> a;
 
-    for (int i = 0; i < 10; i++) {
-        std::cout << "Fibonacci value:" << fib1 << std::endl;
-        fib3 = fib1;
-        fib1 = fib1 + fib2;
-        fib2 = fib3;
-    }
-
-    return 0;
+	return 0;
 }
