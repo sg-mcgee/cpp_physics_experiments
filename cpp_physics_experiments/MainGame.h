@@ -4,6 +4,8 @@
 
 #include "Sprite.h"
 
+#include "TestShader.h"
+
 enum class GameState {PLAY, EXIT};
 
 class MainGame
@@ -27,5 +29,9 @@ private:
 	GameState _gameState;
 
 	Sprite _sprite;
+
+	TestShader shader;
+
+	float location_tracker;
 };
 

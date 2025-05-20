@@ -1,9 +1,10 @@
 #include "MainGame.h"
-
+#include "TestShader.h"
 #include "Sprite.h"
 
 #include <iostream>
 
+//Raise error in terminal and quiot
 void fatalError(std::string errorString) {
 	std::cout << errorString << std::endl;
 	std::cout << "Enter any key to exit..." << std::endl;
@@ -12,6 +13,7 @@ void fatalError(std::string errorString) {
 	SDL_Quit();
 }
 
+//Game information constructor
 MainGame::MainGame() {
 	_window = nullptr;
 	_screenWidth = 1024;
@@ -19,6 +21,7 @@ MainGame::MainGame() {
 	_gameState = GameState::PLAY;
 }
 
+//Game destructor
 MainGame::~MainGame() {
 
 }
@@ -53,8 +56,14 @@ void MainGame::initSystems() {
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1); //Two windows, for drawing and clearing then swap, prevents flicker
 
 	glClearColor(0.0f, 0.0f, 1.0f, 1.0f); //Set color (RGBA)
-	
 
+	shader.compile(
+		"C:\\Users\\garto\\source\\shaders\\colorShading.vert.txt", 
+		"C:\\Users\\garto\\source\\shaders\\colorShading.frag.txt"
+	);
+	
+	//Test init of var
+	float location_tracker = 0.0;
 
 }
 
@@ -76,6 +85,7 @@ void MainGame::processInput() {
 				break;
 			case SDL_EVENT_MOUSE_MOTION:
 				std::cout << user_event.motion.x << " " << user_event.motion.y << std::endl;
+				location_tracker += 0.1;
 				break;
 
 		}
@@ -86,6 +96,8 @@ void MainGame::drawGame() {
 	glClearDepth(1.0); //Boilerplate
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //Clears color buffer & depth buffer
 
+	shader.use();
+	_sprite.init(-1.0f + location_tracker, -1.0f, 1.0f, 1.0f);
 	_sprite.draw();
 
 

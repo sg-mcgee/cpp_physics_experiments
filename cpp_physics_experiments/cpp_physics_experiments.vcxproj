@@ -129,10 +129,12 @@
     <ClCompile Include="cpp_physics_experiments.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="TestShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="TestShader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

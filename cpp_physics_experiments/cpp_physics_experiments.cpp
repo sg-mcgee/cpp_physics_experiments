@@ -15,6 +15,8 @@
 int main() {
 	MainGame mainGame;
 	mainGame.run();
+	const GLubyte* version = glGetString(GL_VERSION);
+	std::cout << "OpenGL Version: " << version << std::endl;
 
 	return 0;
 }
