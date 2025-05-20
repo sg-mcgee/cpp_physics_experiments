@@ -30,5 +30,13 @@ void MainGame::gameLoop() {
 	}
 }
 void MainGame::processInput() {
+	SDL_Event user_event;
 
+	while (SDL_PollEvent(&user_event)) {
+		switch (user_event.type) {
+			case SDL_EVENT_QUIT:
+				_gameState = GameState::EXIT;
+				break;
+		}
+	}
 }

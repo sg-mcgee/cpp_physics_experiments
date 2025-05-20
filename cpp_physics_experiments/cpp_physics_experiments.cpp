@@ -14,9 +14,5 @@ int main() {
 	MainGame mainGame;
 	mainGame.run();
 
-	std::cout << "Enter any key to exit...";
-	int a;
-	std::cin >> a;
-
 	return 0;
 }
