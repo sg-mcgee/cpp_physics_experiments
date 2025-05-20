@@ -47,7 +47,7 @@ void MainGame::initSystems() {
 
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1); //Two windows, for drawing and clearing then swap, prevents flicker
 
-	glClearColor(0.0f, 0.0f, 1.0f, 1.0); //Set color (RGBA)
+	glClearColor(0.0f, 0.0f, 1.0f, 1.0f); //Set color (RGBA)
 	
 
 
@@ -56,6 +56,7 @@ void MainGame::initSystems() {
 void MainGame::gameLoop() {
 	while (_gameState != GameState::EXIT) {
 		processInput();
+		drawGame();
 	}
 }
 
