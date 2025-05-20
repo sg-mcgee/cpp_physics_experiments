@@ -1,5 +1,7 @@
 #pragma once
+#include <GL\glew.h>
 #include <SDL3\SDL.h>
+
 
 enum class GameState {PLAY, EXIT};
 
@@ -16,6 +18,7 @@ private:
 	void initSystems();
 	void gameLoop();
 	void processInput();
+	void drawGame();
 
 	SDL_Window* _window;
 	int _screenWidth;
