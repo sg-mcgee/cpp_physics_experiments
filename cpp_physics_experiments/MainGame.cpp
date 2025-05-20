@@ -1,4 +1,7 @@
 #include "MainGame.h"
+
+#include "Sprite.h"
+
 #include <iostream>
 
 void fatalError(std::string errorString) {
@@ -22,6 +25,8 @@ MainGame::~MainGame() {
 
 void MainGame::run() {
 	initSystems();
+
+	_sprite.init(-1.0f, -1.0f, 1.0f, 1.0f);
 
 	gameLoop();
 }
@@ -81,14 +86,10 @@ void MainGame::drawGame() {
 	glClearDepth(1.0); //Boilerplate
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //Clears color buffer & depth buffer
 
+	_sprite.draw();
 
-	glEnableClientState(GL_COLOR_ARRAY);
-	glBegin(GL_TRIANGLES);
-	glVertex2f(-1, -1);
-	glVertex2f(0, -1);
-	glVertex2f(-1, 0);
-	glEnd();
 
+	//Swap our buffer and draw everything to screen
 	SDL_GL_SwapWindow(_window);
 
 }
