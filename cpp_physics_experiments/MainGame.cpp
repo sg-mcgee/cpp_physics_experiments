@@ -64,6 +64,8 @@ void MainGame::initSystems() {
 	
 	//Test init of var
 	float location_tracker = 0.0;
+	int mouse_x = 0;
+	int mouse_y = 0;
 
 }
 
@@ -84,8 +86,13 @@ void MainGame::processInput() {
 				_gameState = GameState::EXIT;
 				break;
 			case SDL_EVENT_MOUSE_MOTION:
-				std::cout << user_event.motion.x << " " << user_event.motion.y << std::endl;
+				mouse_x = user_event.motion.x;
+				mouse_y = user_event.motion.y;
+				float float_fix = 0.0f;
+				scale_mouse_x = 2 * (mouse_x - _screenWidth + float_fix) / (_screenWidth)+1;
+				scale_mouse_y = -(2 * (mouse_y - _screenHeight + float_fix) / (_screenHeight)+1);
 				location_tracker += 0.1;
+				std::cout << scale_mouse_x << " " << scale_mouse_y << std::endl;
 				break;
 
 		}
@@ -97,7 +104,7 @@ void MainGame::drawGame() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //Clears color buffer & depth buffer
 
 	shader.use();
-	_sprite.init(-1.0f + location_tracker, -1.0f, 1.0f, 1.0f);
+	_sprite.init(0.0f + scale_mouse_x, 0.0f + scale_mouse_y, 1.0f, 1.0f);
 	_sprite.draw();
 
 

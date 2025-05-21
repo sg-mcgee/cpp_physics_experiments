@@ -33,5 +33,9 @@ private:
 	TestShader shader;
 
 	float location_tracker;
+	int mouse_x;
+	int mouse_y;
+	float scale_mouse_x;
+	float scale_mouse_y;
 };
 
