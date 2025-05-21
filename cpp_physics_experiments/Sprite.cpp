@@ -49,15 +49,23 @@ void Sprite::init(float x, float y, float width, float height) {
 }
 
 void Sprite::draw() {
-	glBindBuffer(GL_ARRAY_BUFFER, _vboID); //Get buffer
+	glBindBuffer(GL_ARRAY_BUFFER, _vboID); //Binds vertex buffer (VBO) that contains vertex data
 
-	glEnableVertexAttribArray(0); //Tell GL what data we are passing
+	glEnableVertexAttribArray(0); //Enable vertex attribute at location 0, see vertex shader
 
+	//Tell OpenGL how to interpret the data in bound VBO
+	//0: Matches layout(location=0) in shader
+	//2: Each vertex has 2 floats, x,y
+	//Each component is a float
+	//Do not normalize
+	//Stride of 0, no gaps between data
+	//Pointer offset of 0, start at beginning
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, 0); //This is where to start when draw
 	
+	//Treat each group of 3 vertices as triangle, start at 0, 6 vertices total (2 triangles)
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 
-	glDisableVertexAttribArray(0); //Disable
+	glDisableVertexAttribArray(0); //Disable attribute array at location 0, not necessary but good hygiene
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0); //Release buffer
 }
