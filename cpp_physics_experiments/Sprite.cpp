@@ -1,4 +1,5 @@
 #include "Sprite.h"
+#include <iostream>
 
 Sprite::Sprite() {
 	_vboID = 0;
@@ -10,7 +11,7 @@ Sprite::~Sprite() {
 		glDeleteBuffers(1, &_vboID);
 	}
 	if (_vaoID != 0) {
-		glDeleteBuffers(1, &_vaoID);
+		glDeleteVertexArrays(1, &_vaoID);
 	}
 }
 
@@ -25,9 +26,9 @@ void Sprite::init(float x, float y, float width, float height) {
 	}
 	glBindBuffer(GL_ARRAY_BUFFER, _vboID); //Bind buffer
 	if (_vaoID == 0) {
-		glGenBuffers(1, &_vaoID); //Generate buffer
+		glGenVertexArrays(1, &_vaoID); //Generate buffer
 	}
-	glBindBuffer(GL_ARRAY_BUFFER, _vaoID); //Bind buffer
+	glBindVertexArray(_vaoID); //Bind buffer
 
 	float vertexData[12];//Two values for 6 points, square is made of 2 triangles
 	//First triangle

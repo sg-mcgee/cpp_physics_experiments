@@ -8,6 +8,32 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		..\..\libs\glm\CMakeLists.txt = ..\..\libs\glm\CMakeLists.txt
+		..\..\libs\glm\common.hpp = ..\..\libs\glm\common.hpp
+		..\..\libs\glm\copying.txt = ..\..\libs\glm\copying.txt
+		..\..\libs\glm\exponential.hpp = ..\..\libs\glm\exponential.hpp
+		..\..\libs\glm\ext.hpp = ..\..\libs\glm\ext.hpp
+		..\..\libs\glm\fwd.hpp = ..\..\libs\glm\fwd.hpp
+		..\..\libs\glm\geometric.hpp = ..\..\libs\glm\geometric.hpp
+		..\..\libs\glm\glm.cppm = ..\..\libs\glm\glm.cppm
+		..\..\libs\glm\glm.hpp = ..\..\libs\glm\glm.hpp
+		..\..\libs\glm\integer.hpp = ..\..\libs\glm\integer.hpp
+		..\..\libs\glm\mat2x2.hpp = ..\..\libs\glm\mat2x2.hpp
+		..\..\libs\glm\mat2x3.hpp = ..\..\libs\glm\mat2x3.hpp
+		..\..\libs\glm\mat2x4.hpp = ..\..\libs\glm\mat2x4.hpp
+		..\..\libs\glm\mat3x2.hpp = ..\..\libs\glm\mat3x2.hpp
+		..\..\libs\glm\mat3x3.hpp = ..\..\libs\glm\mat3x3.hpp
+		..\..\libs\glm\mat3x4.hpp = ..\..\libs\glm\mat3x4.hpp
+		..\..\libs\glm\mat4x2.hpp = ..\..\libs\glm\mat4x2.hpp
+		..\..\libs\glm\mat4x3.hpp = ..\..\libs\glm\mat4x3.hpp
+		..\..\libs\glm\mat4x4.hpp = ..\..\libs\glm\mat4x4.hpp
+		..\..\libs\glm\matrix.hpp = ..\..\libs\glm\matrix.hpp
+		..\..\libs\glm\packing.hpp = ..\..\libs\glm\packing.hpp
+		..\..\libs\glm\trigonometric.hpp = ..\..\libs\glm\trigonometric.hpp
+		..\..\libs\glm\vec2.hpp = ..\..\libs\glm\vec2.hpp
+		..\..\libs\glm\vec3.hpp = ..\..\libs\glm\vec3.hpp
+		..\..\libs\glm\vec4.hpp = ..\..\libs\glm\vec4.hpp
+		..\..\libs\glm\vector_relational.hpp = ..\..\libs\glm\vector_relational.hpp
 	EndProjectSection
 EndProject
 Global

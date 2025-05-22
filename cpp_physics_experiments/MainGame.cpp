@@ -2,6 +2,9 @@
 #include "TestShader.h"
 #include "Sprite.h"
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
 #include <iostream>
 
 //Raise error in terminal and quiot
@@ -29,7 +32,7 @@ MainGame::~MainGame() {
 void MainGame::run() {
 	initSystems();
 
-	_sprite.init(-1.0f, -1.0f, 1.0f, 1.0f);
+	_sprite.init(-0.5f, -0.5f, 1.0f, 1.0f);
 
 	gameLoop();
 }
@@ -63,6 +66,7 @@ void MainGame::initSystems() {
 	);
 	
 	//Test init of var
+	float float_fix = 0.0f;
 	float location_tracker = 0.0;
 	int mouse_x = 0;
 	int mouse_y = 0;
@@ -88,13 +92,14 @@ void MainGame::processInput() {
 			case SDL_EVENT_MOUSE_MOTION:
 				mouse_x = user_event.motion.x;
 				mouse_y = user_event.motion.y;
-				float float_fix = 0.0f;
 				scale_mouse_x = 2 * (mouse_x - _screenWidth + float_fix) / (_screenWidth)+1;
 				scale_mouse_y = -(2 * (mouse_y - _screenHeight + float_fix) / (_screenHeight)+1);
 				location_tracker += 0.1;
 				std::cout << scale_mouse_x << " " << scale_mouse_y << std::endl;
 				break;
-
+			case SDL_EVENT_MOUSE_BUTTON_DOWN:
+				std::cout << "Mouse clicked" << std::endl;
+				break;
 		}
 	}
 }
@@ -104,9 +109,17 @@ void MainGame::drawGame() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //Clears color buffer & depth buffer
 
 	shader.use();
-	_sprite.init(0.0f + scale_mouse_x, 0.0f + scale_mouse_y, 1.0f, 1.0f);
-	_sprite.draw();
 
+	// Create transformation matrix (move sprite based on mouse)
+	glm::mat4 model = glm::mat4(1.0f);
+	model = glm::translate(model, glm::vec3(scale_mouse_x, scale_mouse_y, 0.0f));
+
+	// Send the matrix to the shader
+	GLuint modelLoc = glGetUniformLocation(shader.getID(), "model"); // or shader.programID()
+	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, &model[0][0]);
+
+	// Now just draw
+	_sprite.draw();
 
 	//Swap our buffer and draw everything to screen
 	SDL_GL_SwapWindow(_window);

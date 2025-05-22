@@ -37,5 +37,6 @@ private:
 	int mouse_y;
 	float scale_mouse_x;
 	float scale_mouse_y;
+	float float_fix;
 };
 
