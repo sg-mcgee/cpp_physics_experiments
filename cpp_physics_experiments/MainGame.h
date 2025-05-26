@@ -29,14 +29,15 @@ private:
 	GameState _gameState;
 
 	Sprite _sprite;
+	Sprite ground_sprite;
 
 	TestShader shader;
 
 	float location_tracker;
-	int mouse_x;
-	int mouse_y;
+	float mouse_x;
+	float mouse_y;
 	float scale_mouse_x;
 	float scale_mouse_y;
-	float float_fix;
+	const float float_fix = 0.0;
 };
 

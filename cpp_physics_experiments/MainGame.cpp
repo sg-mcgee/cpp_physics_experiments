@@ -32,7 +32,9 @@ MainGame::~MainGame() {
 void MainGame::run() {
 	initSystems();
 
-	_sprite.init(-0.5f, -0.5f, 1.0f, 1.0f);
+	_sprite.init(1.0f, 1.0f,glm::vec4(1.0f,0.0f,1.0f,1.0f));
+	_sprite.setPosition(-0.5f, -0.7f);
+	_sprite.setScale(1.0f, 0.5f);
 
 	gameLoop();
 }
@@ -110,16 +112,13 @@ void MainGame::drawGame() {
 
 	shader.use();
 
-	// Create transformation matrix (move sprite based on mouse)
-	glm::mat4 model = glm::mat4(1.0f);
-	model = glm::translate(model, glm::vec3(scale_mouse_x, scale_mouse_y, 0.0f));
+	//// Create transformation matrix (move sprite based on mouse)
+	//glm::mat4 model = glm::mat4(1.0f);
+	//model = glm::translate(model, glm::vec3(scale_mouse_x, scale_mouse_y, 0.0f));
 
-	// Send the matrix to the shader
-	GLuint modelLoc = glGetUniformLocation(shader.getID(), "model"); // or shader.programID()
-	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, &model[0][0]);
-
-	// Now just draw
-	_sprite.draw();
+	_sprite.setPosition(scale_mouse_x, scale_mouse_y);
+	_sprite.setScale(scale_mouse_x, scale_mouse_y);
+	_sprite.draw(shader.getID()); // Just pass shaderID — sprite handles its own transform
 
 	//Swap our buffer and draw everything to screen
 	SDL_GL_SwapWindow(_window);
